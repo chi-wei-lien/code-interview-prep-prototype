@@ -1,8 +1,4 @@
 import { CredentialResponse } from "@react-oauth/google";
-import {
-  GoogleLoginResponse,
-  GoogleLoginResponseOffline,
-} from "react-google-login";
 
 const handleLogin = async (credentialResponse: CredentialResponse) => {
   console.log(credentialResponse);

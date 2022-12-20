@@ -25,27 +25,17 @@ function App() {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    await fetch("http://localhost:8080/application", {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify({
-        company,
-        companyURL,
-        role,
-        createdAt,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(async () => {
-      await Application.getApplications().then((apps: Application[]) => {
-        setApplications(apps);
-      });
-      setCompany("");
-      setCompanyURL("");
-      setCreatedAt("");
-      setRole("");
-    });
+    await Application.addApplication(company, companyURL, role, createdAt).then(
+      async () => {
+        await Application.getApplications().then((apps: Application[]) => {
+          setApplications(apps);
+          setCompany("");
+          setCompanyURL("");
+          setCreatedAt("");
+          setRole("");
+        });
+      }
+    );
   };
 
   return (

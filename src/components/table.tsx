@@ -41,38 +41,18 @@ const Table = ({ applications, setApplications }: ITableProps) => {
     newRole: string,
     newCreatedAt: string
   ) => {
-    fetch("http://localhost:8080/application", {
-      method: "PATCH",
-      credentials: "include",
-      body: JSON.stringify({
-        company: newCompany,
-        companyURL: newCompanyURL,
-        role: newRole,
-        createdAt: newCreatedAt,
-        id,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(async () => {
+    Application.updateApplication(
+      newCompany,
+      newCompanyURL,
+      newCreatedAt,
+      newRole,
+      id
+    ).then(async () => {
       onCancel();
       await Application.getApplications().then((apps: Application[]) => {
         setApplications(apps);
       });
     });
-    // Application.updateApplication(
-    //   newCompany,
-    //   newCompanyURL,
-    //   newCreateAt,
-    //   newRole,
-    //   id
-    // ).then(async () => {
-    //   onCancel();
-    //   await Application.getApplications().then((apps: Application[]) => {
-    //     setApplications(apps);
-    //     console.log("fetched again");
-    //   });
-    // });
   };
 
   const onCancel = () => {

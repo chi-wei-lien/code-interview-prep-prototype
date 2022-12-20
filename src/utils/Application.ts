@@ -1,10 +1,3 @@
-// export interface IApplication {
-//   company: string;
-//   companyURL: string;
-//   createAt: Date;
-//   id: number;
-// }
-
 class Application {
   public company;
   public companyURL;
@@ -55,6 +48,27 @@ class Application {
     });
   };
 
+  static addApplication = async (
+    company: string,
+    companyURL: string,
+    role: string,
+    createdAt: string
+  ) => {
+    fetch("http://localhost:8080/application", {
+      method: "POST",
+      credentials: "include",
+      body: JSON.stringify({
+        company,
+        companyURL,
+        role,
+        createdAt,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
+
   static updateApplication = async (
     company: string,
     companyURL: string,
@@ -63,7 +77,7 @@ class Application {
     id: number
   ) => {
     fetch("http://localhost:8080/application", {
-      method: "PUT",
+      method: "PATCH",
       credentials: "include",
       body: JSON.stringify({
         company,
@@ -76,7 +90,6 @@ class Application {
         "Content-Type": "application/json",
       },
     });
-    console.log("after patch");
   };
 }
 

@@ -4,13 +4,15 @@ import { GoogleLogin } from "@react-oauth/google";
 import handleLogin from "./utils/handleLogin";
 import handleLogout from "./utils/handleLogout";
 import Application from "./utils/Application";
+import Table from "./components/table";
 
 function App() {
+  const [applications, setApplications] = useState<Application[]>([]);
+
   const [company, setCompany] = useState("");
   const [companyURL, setCompanyURL] = useState("");
   const [role, setRole] = useState("");
   const [createdAt, setCreatedAt] = useState("");
-  const [applications, setApplications] = useState<Application[]>([]);
 
   useEffect(() => {
     const callGetApplication = async () => {
@@ -90,16 +92,10 @@ function App() {
         </label>
         <input type="submit" />
       </form>
-      {applications.map((application) => {
-        return (
-          <div key={application.id}>
-            <span>{application.company} </span>
-            <span>{application.companyURL} </span>
-            <span>{application.createdAt} </span>
-            <span>{application.role} </span>
-          </div>
-        );
-      })}
+      <Table
+        applications={applications}
+        setApplications={setApplications}
+      ></Table>
     </div>
   );
 }

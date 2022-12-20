@@ -54,6 +54,30 @@ class Application {
         .catch((err) => reject(err));
     });
   };
+
+  static updateApplication = async (
+    company: string,
+    companyURL: string,
+    createdAt: string,
+    role: string,
+    id: number
+  ) => {
+    fetch("http://localhost:8080/application", {
+      method: "PUT",
+      credentials: "include",
+      body: JSON.stringify({
+        company,
+        companyURL,
+        role,
+        createdAt,
+        id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    console.log("after patch");
+  };
 }
 
 export default Application;

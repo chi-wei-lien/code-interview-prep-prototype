@@ -1,6 +1,5 @@
 import { Dispatch } from "react";
 import Application from "./Application";
-import { CredentialResponse } from "@react-oauth/google";
 
 const handleLogout = async (
   setApplications: Dispatch<React.SetStateAction<Application[]>>

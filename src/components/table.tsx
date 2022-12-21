@@ -88,45 +88,62 @@ const Table = ({ applications, setApplications }: ITableProps) => {
       </thead>
       <tbody>
         {applications.map((application) => {
-          return (
-            <tr key={application.id}>
-              <td>{application.company} </td>
-              <td>{application.companyURL} </td>
-              <td>{application.createdAt} </td>
-              {/* <td>{application.role} </td> */}
-              <td>
-                {inEditMode.status && inEditMode.rowKey === application.id ? (
+          if (inEditMode.status && inEditMode.rowKey === application.id) {
+            return (
+              <tr key={application.id}>
+                <td>
+                  <input
+                    value={newCompany}
+                    onChange={(event) => setNewCompany(event.target.value)}
+                  />
+                </td>
+                <td>
+                  <input
+                    value={newCompanyURL}
+                    onChange={(event) => setNewCompanyURL(event.target.value)}
+                  />
+                </td>
+                <td>
+                  <input
+                    type={"Date"}
+                    value={newCreatedAt}
+                    onChange={(event) => setNewCreatedAt(event.target.value)}
+                  />
+                </td>
+                <td>
                   <input
                     value={newRole}
                     onChange={(event) => setNewRole(event.target.value)}
                   />
-                ) : (
-                  application.role
-                )}
-              </td>
-              <td>
-                {inEditMode.status && inEditMode.rowKey === application.id ? (
-                  <React.Fragment>
-                    <button
-                      onClick={() =>
-                        onSave(
-                          application.id,
-                          newCompany,
-                          newCompanyURL,
-                          newRole,
-                          newCreatedAt
-                        )
-                      }
-                    >
-                      Save
-                    </button>
-                    <button onClick={() => remove(application.id)}>
-                      Remove
-                    </button>
+                </td>
+                <td>
+                  <button
+                    onClick={() =>
+                      onSave(
+                        application.id,
+                        newCompany,
+                        newCompanyURL,
+                        newRole,
+                        newCreatedAt
+                      )
+                    }
+                  >
+                    Save
+                  </button>
+                  <button onClick={() => remove(application.id)}>Remove</button>
 
-                    <button onClick={() => onCancel()}>Cancel</button>
-                  </React.Fragment>
-                ) : (
+                  <button onClick={() => onCancel()}>Cancel</button>
+                </td>
+              </tr>
+            );
+          } else {
+            return (
+              <tr key={application.id}>
+                <td>{application.company} </td>
+                <td>{application.companyURL} </td>
+                <td>{application.createdAt} </td>
+                <td>{application.role} </td>
+                <td>
                   <button
                     className={"btn-primary"}
                     onClick={() =>
@@ -141,10 +158,10 @@ const Table = ({ applications, setApplications }: ITableProps) => {
                   >
                     Edit
                   </button>
-                )}
-              </td>
-            </tr>
-          );
+                </td>
+              </tr>
+            );
+          }
         })}
       </tbody>
     </table>

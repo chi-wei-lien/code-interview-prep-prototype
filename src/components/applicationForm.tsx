@@ -26,41 +26,65 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
     );
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Enter company:
-        <input
-          type="text"
-          onChange={(event) => setCompany(event.target.value)}
-          value={company}
-        />
-      </label>
-      <label>
-        Enter companyURL:
-        <input
-          type="text"
-          onChange={(event) => setCompanyURL(event.target.value)}
-          value={companyURL}
-        />
-      </label>
-      <label>
-        Enter role:
-        <input
-          type="text"
-          onChange={(event) => setRole(event.target.value)}
-          value={role}
-        />
-      </label>
-      <label>
-        Enter createdAt:
-        <input
-          type="Date"
-          onChange={(event) => setCreatedAt(event.target.value)}
-          value={createdAt}
-        />
-      </label>
-      <input type="submit" />
-    </form>
+    <div className="w-3/4 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit">
+      <h1 className="pb-5 text-xl text-center underline decoration-orange-300 declaration-3">
+        Add Job Application
+      </h1>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-row flex-wrap justify-center gap-4"
+      >
+        <div className="w-48">
+          <label>Company:</label>
+          <br></br>
+          <input
+            type="text"
+            onChange={(event) => setCompany(event.target.value)}
+            value={company}
+            className="w-full p-1 mt-1 text-slate-600"
+            required
+          />
+        </div>
+        <div className="w-48">
+          <label>Company URL:</label>
+          <br></br>
+          <input
+            type="text"
+            onChange={(event) => setCompanyURL(event.target.value)}
+            value={companyURL}
+            className="w-full p-1 mt-1 text-slate-600"
+            required
+          />
+        </div>
+
+        <div className="w-48">
+          <label>Role:</label>
+          <br></br>
+          <input
+            type="text"
+            onChange={(event) => setRole(event.target.value)}
+            value={role}
+            className="w-full p-1 mt-1 text-slate-600"
+            required
+          />
+        </div>
+
+        <div className="w-48">
+          <label>Applied Date:</label>
+          <br></br>
+          <input
+            type="Date"
+            onChange={(event) => setCreatedAt(event.target.value)}
+            value={createdAt}
+            className="w-full p-1 mt-1 text-slate-600"
+          />
+        </div>
+        <div className="h-0 basis-full"></div>
+        <button type="submit" className="underline bg-orange-300">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

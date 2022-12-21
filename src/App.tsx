@@ -14,6 +14,7 @@ import CodeChallengeForm from "./components/codeChallengeForm";
 import Header from "./components/header";
 
 import "./index.css";
+import DashBoard from "./components/dashboard";
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -38,8 +39,9 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div>
       <Header></Header>
+      <DashBoard></DashBoard>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           handleLogin(credentialResponse, setApplications, setCodeChallenges);
@@ -55,11 +57,11 @@ function App() {
       >
         logout
       </button>
-      <ApplicationForm setApplications={setApplications}></ApplicationForm>
+      {/* <ApplicationForm setApplications={setApplications}></ApplicationForm>
       <ApplicationTable
         applications={applications}
         setApplications={setApplications}
-      ></ApplicationTable>
+      ></ApplicationTable> */}
       <CodeChallengeForm
         setCodeChallenges={setCodeChallenges}
       ></CodeChallengeForm>

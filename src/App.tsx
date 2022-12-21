@@ -14,12 +14,12 @@ function App() {
   const [role, setRole] = useState("");
   const [createdAt, setCreatedAt] = useState("");
 
+  const callGetApplication = async () => {
+    await Application.getApplications().then((apps: Application[]) => {
+      setApplications(apps);
+    });
+  };
   useEffect(() => {
-    const callGetApplication = async () => {
-      await Application.getApplications().then((apps: Application[]) => {
-        setApplications(apps);
-      });
-    };
     callGetApplication();
   }, []);
 
@@ -41,12 +41,20 @@ function App() {
   return (
     <div className="App">
       <GoogleLogin
-        onSuccess={handleLogin}
+        onSuccess={(credentialResponse) => {
+          handleLogin(credentialResponse, setApplications);
+        }}
         onError={() => {
           console.error("Login Failed");
         }}
       />
-      <button onClick={handleLogout}>logout</button>
+      <button
+        onClick={() => {
+          handleLogout(setApplications);
+        }}
+      >
+        logout
+      </button>
       <form onSubmit={handleSubmit}>
         <label>
           Enter company:

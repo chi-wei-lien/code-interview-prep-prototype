@@ -21,8 +21,8 @@ class Application {
 
   static getApplications = async (): Promise<Application[]> => {
     const fetchedApplications: Application[] = [];
-    return new Promise((resolve, reject) => {
-      fetch("http://localhost:8080/application", {
+    return new Promise(async (resolve, reject) => {
+      await fetch("http://localhost:8080/application", {
         method: "GET",
         credentials: "include",
         headers: {
@@ -54,7 +54,7 @@ class Application {
     role: string,
     createdAt: string
   ) => {
-    fetch("http://localhost:8080/application", {
+    await fetch("http://localhost:8080/application", {
       method: "POST",
       credentials: "include",
       body: JSON.stringify({
@@ -76,7 +76,7 @@ class Application {
     role: string,
     id: number
   ) => {
-    fetch("http://localhost:8080/application", {
+    await fetch("http://localhost:8080/application", {
       method: "PATCH",
       credentials: "include",
       body: JSON.stringify({
@@ -93,7 +93,7 @@ class Application {
   };
 
   static removeApplication = async (id: number) => {
-    fetch("http://localhost:8080/application", {
+    await fetch("http://localhost:8080/application", {
       method: "DELETE",
       credentials: "include",
       body: JSON.stringify({

@@ -10,6 +10,11 @@ import CodeChallengeTable from "./components/codeChallengeTable";
 import ApplicationForm from "./components/applicationForm";
 import CodeChallengeForm from "./components/codeChallengeForm";
 
+// components
+import Header from "./components/header";
+
+import "./index.css";
+
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [codeChallenges, setCodeChallenges] = useState<CodeChallenge[]>([]);
@@ -34,6 +39,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header></Header>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           handleLogin(credentialResponse, setApplications, setCodeChallenges);

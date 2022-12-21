@@ -6,7 +6,7 @@ interface ITableProps {
   setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
 }
 
-const Table = ({ applications, setApplications }: ITableProps) => {
+const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   const [inEditMode, setInEditMode] = useState({
     status: false,
     rowKey: -1,
@@ -168,4 +168,4 @@ const Table = ({ applications, setApplications }: ITableProps) => {
   );
 };
 
-export default Table;
+export default ApplicationTable;

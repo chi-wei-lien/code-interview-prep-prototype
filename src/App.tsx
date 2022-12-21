@@ -4,7 +4,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import handleLogin from "./utils/handleLogin";
 import handleLogout from "./utils/handleLogout";
 import Application from "./utils/Application";
-import Table from "./components/table";
+import ApplicationTable from "./components/applicationTable";
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -90,10 +90,10 @@ function App() {
         </label>
         <input type="submit" />
       </form>
-      <Table
+      <ApplicationTable
         applications={applications}
         setApplications={setApplications}
-      ></Table>
+      ></ApplicationTable>
     </div>
   );
 }

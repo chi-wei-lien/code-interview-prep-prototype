@@ -62,9 +62,7 @@ function App() {
         applications={applications}
         setApplications={setApplications}
       ></ApplicationTable> */}
-      <CodeChallengeForm
-        setCodeChallenges={setCodeChallenges}
-      ></CodeChallengeForm>
+
       <CodeChallengeTable
         codeChallenges={codeChallenges}
         setCodeChallenge={setCodeChallenges}

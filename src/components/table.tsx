@@ -55,6 +55,15 @@ const Table = ({ applications, setApplications }: ITableProps) => {
     });
   };
 
+  const remove = (id: number) => {
+    Application.removeApplication(id).then(async () => {
+      onCancel();
+      await Application.getApplications().then((apps: Application[]) => {
+        setApplications(apps);
+      });
+    });
+  };
+
   const onCancel = () => {
     setInEditMode({
       status: false,
@@ -110,6 +119,9 @@ const Table = ({ applications, setApplications }: ITableProps) => {
                       }
                     >
                       Save
+                    </button>
+                    <button onClick={() => remove(application.id)}>
+                      Remove
                     </button>
 
                     <button onClick={() => onCancel()}>Cancel</button>

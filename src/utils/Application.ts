@@ -91,6 +91,19 @@ class Application {
       },
     });
   };
+
+  static removeApplication = async (id: number) => {
+    fetch("http://localhost:8080/application", {
+      method: "DELETE",
+      credentials: "include",
+      body: JSON.stringify({
+        id,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  };
 }
 
 export default Application;

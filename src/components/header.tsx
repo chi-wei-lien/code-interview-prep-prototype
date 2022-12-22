@@ -15,7 +15,7 @@ const Header = () => {
         <div className="pt-8 text-center w-72">
           Start tracking your{" "}
           <span className="underline decoration-sky-300 decoration-3">
-            code interview prep
+            code interview preperation
           </span>{" "}
           and{" "}
           <span className="underline decoration-orange-300 decoration-3">

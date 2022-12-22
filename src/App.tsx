@@ -1,19 +1,17 @@
 import { useEffect, useState } from "react";
-import { GoogleLogin } from "@react-oauth/google";
-import handleLogin from "./utils/handleLogin";
-import handleLogout from "./utils/handleLogout";
 import Application from "./utils/Application";
 import CodeChallenge from "./utils/CodeChallenge";
 import Navbar from "./components/navbar";
 
+import "./index.css";
+
 // components
 import Header from "./components/header";
-
-import "./index.css";
 import DashBoard from "./components/dashboard";
 import Graphs from "./components/graphs";
 import Login from "./components/login";
 import Logout from "./components/logout";
+import About from "./components/about";
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -61,7 +59,7 @@ function App() {
       );
     }
   } else if (page === "about") {
-    pageContent = <div>about</div>;
+    pageContent = <About></About>;
   } else if (page === "graph") {
     if (loggedIn) {
       pageContent = (

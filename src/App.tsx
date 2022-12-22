@@ -89,6 +89,7 @@ function App() {
             setApplications={setApplications}
             setCodeChallenges={setCodeChallenges}
             setLoggedIn={setLoggedIn}
+            setPage={setPage}
           ></Logout>
         </div>
       );
@@ -101,23 +102,6 @@ function App() {
       <div className="w-full h-0.5 bg-slate-800 mb-5"></div>
       <Navbar loggedIn={loggedIn} page={page} setPage={setPage}></Navbar>
       {pageContent}
-      {/* <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          handleLogin(credentialResponse, setApplications, setCodeChallenges);
-          setLoggedIn(true);
-        }}
-        onError={() => {
-          console.error("Login Failed");
-        }}
-      />
-      <button
-        onClick={() => {
-          handleLogout(setApplications, setCodeChallenges);
-          setLoggedIn(false);
-        }}
-      >
-        logout
-      </button> */}
     </div>
   );
 }

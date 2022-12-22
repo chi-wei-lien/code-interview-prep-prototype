@@ -16,16 +16,19 @@ const Login = ({
   setLoggedIn,
 }: ILoginProps) => {
   return (
-    <div>
-      <GoogleLogin
-        onSuccess={(credentialResponse) => {
-          handleLogin(credentialResponse, setApplications, setCodeChallenges);
-          setLoggedIn(true);
-        }}
-        onError={() => {
-          console.error("Login Failed");
-        }}
-      />
+    <div className="flex flex-row flex-wrap justify-center w-full bg-white h-80">
+      <div className="flex flex-col items-center justify-center w-1/3 h-48 border-dashed border-3 border-slate-300">
+        <h1 className="pb-5 text-2xl underline decoration-orange-300">Login</h1>
+        <GoogleLogin
+          onSuccess={(credentialResponse) => {
+            handleLogin(credentialResponse, setApplications, setCodeChallenges);
+            setLoggedIn(true);
+          }}
+          onError={() => {
+            console.error("Login Failed");
+          }}
+        />
+      </div>
     </div>
   );
 };

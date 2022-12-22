@@ -8,18 +8,21 @@ interface ILogoutProps {
   setApplications: Dispatch<React.SetStateAction<Application[]>>;
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
   setLoggedIn: Dispatch<React.SetStateAction<boolean>>;
+  setPage: Dispatch<React.SetStateAction<string>>;
 }
 
 const Logout = ({
   setApplications,
   setCodeChallenges,
   setLoggedIn,
+  setPage,
 }: ILogoutProps) => {
   return (
     <button
       onClick={() => {
         handleLogout(setApplications, setCodeChallenges);
         setLoggedIn(false);
+        setPage("table");
       }}
     >
       logout

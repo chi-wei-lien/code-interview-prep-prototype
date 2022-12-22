@@ -82,7 +82,6 @@ const CodeChallengeTable = ({
       <thead>
         <tr className="text-white bg-sky-300">
           <th className="px-6 py-3">Code Challenge</th>
-          <th className="px-6 py-3">Code Challenge URL</th>
           <th className="px-6 py-3">Finish Date</th>
           <th className="px-6 py-3">Edit</th>
         </tr>
@@ -92,28 +91,29 @@ const CodeChallengeTable = ({
           if (inEditMode.status && inEditMode.rowKey === codeChallenge.id) {
             return (
               <tr key={codeChallenge.id}>
-                <td>
+                <td className="py-2">
+                  <label className="pl-6">Code Challenge Name:</label>
                   <input
                     value={newChallenge}
                     onChange={(event) => setNewChallenge(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
-                </td>
-                <td>
+                  <br></br>
+                  <label className="pl-6">Code Challenge URL: </label>
                   <input
                     value={newChallengeURL}
                     onChange={(event) => setNewChallengeURL(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
                 </td>
-                <td>
+                <td className="py-2">
                   <input
                     type={"Date"}
                     value={dateToString(new Date(newCreatedAt))}
                     onChange={(event) => setNewCreatedAt(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
                 </td>
@@ -151,8 +151,11 @@ const CodeChallengeTable = ({
           } else {
             return (
               <tr key={codeChallenge.id} className="border-b">
-                <td className="px-6 py-3">{codeChallenge.challenge} </td>
-                <td className="px-6 py-3">{codeChallenge.challengeURL} </td>
+                <td className="px-6 py-3 underline">
+                  <a href={codeChallenge.challengeURL} target="_blank">
+                    {codeChallenge.challenge}{" "}
+                  </a>
+                </td>
                 <td className="px-6 py-3">{codeChallenge.createdAt} </td>
                 <td className="px-6 py-3">
                   <button

@@ -81,7 +81,6 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
       <thead>
         <tr className="text-white bg-orange-300">
           <th className="px-6 py-3">Company</th>
-          <th className="px-6 py-3">Company URL</th>
           <th className="px-6 py-3">Applied Date</th>
           <th className="px-6 py-3">Applied Role</th>
           <th className="px-6 py-3">Action</th>
@@ -93,18 +92,19 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
             return (
               <tr key={application.id}>
                 <td>
+                  <label className="pl-6">Company Name:</label>
                   <input
                     value={newCompany}
                     onChange={(event) => setNewCompany(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1 mb-1"
                     size={10}
                   />
-                </td>
-                <td>
+                  <br></br>
+                  <label className="pl-6">Company URL: </label>
                   <input
                     value={newCompanyURL}
                     onChange={(event) => setNewCompanyURL(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
                 </td>
@@ -113,7 +113,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                     type={"Date"}
                     value={dateToString(new Date(newCreatedAt))}
                     onChange={(event) => setNewCreatedAt(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
                 </td>
@@ -121,7 +121,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   <input
                     value={newRole}
                     onChange={(event) => setNewRole(event.target.value)}
-                    className="px-6 py-3"
+                    className="px-6 py-1"
                     size={10}
                   />
                 </td>
@@ -160,8 +160,12 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
           } else {
             return (
               <tr key={application.id} className="border-b">
-                <td className="px-6 py-3">{application.company} </td>
-                <td className="px-6 py-3">{application.companyURL} </td>
+                <td className="px-6 py-3 underline">
+                  <a href={application.companyURL} target="_blank">
+                    {application.company}
+                  </a>
+                </td>
+                {/* <td className="px-6 py-3">{application.companyURL} </td> */}
                 <td className="px-6 py-3">{application.createdAt} </td>
                 <td className="px-6 py-3">{application.role} </td>
                 <td className="px-6 py-3">

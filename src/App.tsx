@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import handleLogin from "./utils/handleLogin";
 import handleLogout from "./utils/handleLogout";
 import Application from "./utils/Application";
 import CodeChallenge from "./utils/CodeChallenge";
+import Navbar from "./components/navbar";
 
 // components
 import Header from "./components/header";
@@ -15,6 +15,8 @@ import DashBoard from "./components/dashboard";
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [codeChallenges, setCodeChallenges] = useState<CodeChallenge[]>([]);
+
+  const [page, setPage] = useState("table");
 
   const fetchApplications = async () => {
     await Application.getApplications().then((apps: Application[]) => {
@@ -33,27 +35,29 @@ function App() {
     fetchCodeChallenges();
   }, []);
 
-  return (
-    <div>
-      <Header></Header>
-      <div className="w-full h-0.5 bg-slate-800 mb-5"></div>
-      <div className="flex justify-center gap-4 mb-7">
-        <button className="px-5 py-1 font-bold border-2 rounded-full bg-yellow-theme border-slate-800">
-          Table
-        </button>
-        <button className="px-5 py-1 font-bold border-2 rounded-full border-slate-800">
-          Graph
-        </button>
-        <button className="px-5 py-1 font-bold border-2 rounded-full border-slate-800">
-          About
-        </button>
-      </div>
+  let pageContent;
+
+  if (page === "table") {
+    pageContent = (
       <DashBoard
         applications={applications}
         setApplications={setApplications}
         codeChallenges={codeChallenges}
         setCodeChallenges={setCodeChallenges}
       ></DashBoard>
+    );
+  } else if (page === "about") {
+    pageContent = <div>about</div>;
+  } else if (page === "graph") {
+    pageContent = <div>graph</div>;
+  }
+
+  return (
+    <div>
+      <Header></Header>
+      <div className="w-full h-0.5 bg-slate-800 mb-5"></div>
+      <Navbar page={page} setPage={setPage}></Navbar>
+      {pageContent}
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           handleLogin(credentialResponse, setApplications, setCodeChallenges);

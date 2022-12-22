@@ -17,6 +17,17 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   const [newRole, setNewRole] = useState("");
   const [newCreatedAt, setNewCreatedAt] = useState("");
 
+  function dateToString(date: Date) {
+    let month = "" + (date.getMonth() + 1);
+    let day = "" + date.getDate();
+    let year = date.getFullYear();
+
+    if (month.length < 2) month = "0" + month;
+    if (day.length < 2) day = "0" + day;
+
+    return [year, month, day].join("-");
+  }
+
   const onEdit = (
     id: number,
     currCompany: string,
@@ -76,17 +87,17 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   };
 
   return (
-    <table>
+    <table className="text-left border table-auto">
       <thead>
-        <tr>
-          <th>Company</th>
-          <th>Company URL</th>
-          <th>Applied Date</th>
-          <th>Applied Role</th>
-          <th>Edit</th>
+        <tr className="text-white bg-orange-300 ">
+          <th className="px-6 py-3">Company</th>
+          <th className="px-6 py-3">Company URL</th>
+          <th className="px-6 py-3">Applied Date</th>
+          <th className="px-6 py-3">Applied Role</th>
+          <th className="px-6 py-3">Action</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="text-slate-700">
         {applications.map((application) => {
           if (inEditMode.status && inEditMode.rowKey === application.id) {
             return (
@@ -95,25 +106,33 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   <input
                     value={newCompany}
                     onChange={(event) => setNewCompany(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
                   <input
                     value={newCompanyURL}
                     onChange={(event) => setNewCompanyURL(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
                   <input
                     type={"Date"}
-                    value={newCreatedAt}
+                    value={dateToString(new Date(newCreatedAt))}
                     onChange={(event) => setNewCreatedAt(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
                   <input
                     value={newRole}
                     onChange={(event) => setNewRole(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
@@ -127,25 +146,37 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                         newCreatedAt
                       )
                     }
+                    className="underline bg-sky-200"
                   >
                     Save
                   </button>
-                  <button onClick={() => remove(application.id)}>Remove</button>
-
-                  <button onClick={() => onCancel()}>Cancel</button>
+                  <span>, </span>
+                  <button
+                    onClick={() => remove(application.id)}
+                    className="underline bg-red-200"
+                  >
+                    Remove
+                  </button>
+                  <span>, </span>
+                  <button
+                    onClick={() => onCancel()}
+                    className="underline bg-yellow-theme"
+                  >
+                    Cancel
+                  </button>
                 </td>
               </tr>
             );
           } else {
             return (
-              <tr key={application.id}>
-                <td>{application.company} </td>
-                <td>{application.companyURL} </td>
-                <td>{application.createdAt} </td>
-                <td>{application.role} </td>
-                <td>
+              <tr key={application.id} className="border-b">
+                <td className="px-6 py-3">{application.company} </td>
+                <td className="px-6 py-3">{application.companyURL} </td>
+                <td className="px-6 py-3">{application.createdAt} </td>
+                <td className="px-6 py-3">{application.role} </td>
+                <td className="px-6 py-3">
                   <button
-                    className={"btn-primary"}
+                    className={"btn-primary bg-yellow-theme underline"}
                     onClick={() =>
                       onEdit(
                         application.id,

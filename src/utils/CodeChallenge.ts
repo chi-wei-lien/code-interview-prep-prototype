@@ -39,7 +39,6 @@ class CodeChallenge {
               )
             );
           }
-          console.log(fetchedCodeChallenges);
           resolve(fetchedCodeChallenges);
         })
         .catch((err) => reject(err));

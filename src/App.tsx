@@ -27,7 +27,6 @@ function App() {
   };
 
   const fetchCodeChallenges = async () => {
-    console.log("called");
     CodeChallenge.getCodeChallenges().then((challenges: CodeChallenge[]) => {
       setCodeChallenges(challenges);
     });

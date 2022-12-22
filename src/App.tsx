@@ -4,11 +4,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import handleLogin from "./utils/handleLogin";
 import handleLogout from "./utils/handleLogout";
 import Application from "./utils/Application";
-import ApplicationTable from "./components/applicationTable";
 import CodeChallenge from "./utils/CodeChallenge";
-import CodeChallengeTable from "./components/codeChallengeTable";
-import ApplicationForm from "./components/applicationForm";
-import CodeChallengeForm from "./components/codeChallengeForm";
 
 // components
 import Header from "./components/header";
@@ -41,18 +37,23 @@ function App() {
     <div>
       <Header></Header>
       <div className="w-full h-0.5 bg-slate-800 mb-5"></div>
-      <div className="flex justify-center mb-7">
-        <div className="px-5 py-1 rounded-full bg-yellow-theme">
-          <button>Table</button>
-        </div>
-        <div className="px-5 py-1 rounded-full bg-yellow-theme">
-          <button>Graph</button>
-        </div>
-        <div className="px-5 py-1 rounded-full bg-yellow-theme">
-          <button>About</button>
-        </div>
+      <div className="flex justify-center gap-4 mb-7">
+        <button className="px-5 py-1 font-bold border-2 rounded-full bg-yellow-theme border-slate-800">
+          Table
+        </button>
+        <button className="px-5 py-1 font-bold border-2 rounded-full border-slate-800">
+          Graph
+        </button>
+        <button className="px-5 py-1 font-bold border-2 rounded-full border-slate-800">
+          About
+        </button>
       </div>
-      <DashBoard></DashBoard>
+      <DashBoard
+        applications={applications}
+        setApplications={setApplications}
+        codeChallenges={codeChallenges}
+        setCodeChallenges={setCodeChallenges}
+      ></DashBoard>
       <GoogleLogin
         onSuccess={(credentialResponse) => {
           handleLogin(credentialResponse, setApplications, setCodeChallenges);

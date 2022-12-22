@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Dispatch } from "react";
 
 import Application from "../utils/Application";
 import CodeChallenge from "../utils/CodeChallenge";
@@ -8,27 +8,19 @@ import ApplicationTable from "./applicationTable";
 import CodeChallengeForm from "./codeChallengeForm";
 import CodeChallengeTable from "./codeChallengeTable";
 
-const DashBoard = () => {
-  const [applications, setApplications] = useState<Application[]>([]);
-  const [codeChallenges, setCodeChallenges] = useState<CodeChallenge[]>([]);
+interface IDashBoardProps {
+  applications: Application[];
+  setApplications: Dispatch<React.SetStateAction<Application[]>>;
+  codeChallenges: CodeChallenge[];
+  setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
+}
 
-  const fetchApplications = async () => {
-    await Application.getApplications().then((apps: Application[]) => {
-      setApplications(apps);
-    });
-  };
-
-  const fetchCodeChallenges = async () => {
-    CodeChallenge.getCodeChallenges().then((challenges: CodeChallenge[]) => {
-      setCodeChallenges(challenges);
-    });
-  };
-
-  useEffect(() => {
-    fetchApplications();
-    fetchCodeChallenges();
-  }, []);
-
+const DashBoard = ({
+  applications,
+  setApplications,
+  codeChallenges,
+  setCodeChallenges,
+}: IDashBoardProps) => {
   return (
     <div className="flex flex-row flex-wrap justify-center w-full bg-white">
       <ApplicationForm setApplications={setApplications}></ApplicationForm>

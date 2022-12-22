@@ -11,6 +11,7 @@ import Header from "./components/header";
 
 import "./index.css";
 import DashBoard from "./components/dashboard";
+import Graphs from "./components/graphs";
 
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -49,7 +50,14 @@ function App() {
   } else if (page === "about") {
     pageContent = <div>about</div>;
   } else if (page === "graph") {
-    pageContent = <div>graph</div>;
+    pageContent = (
+      <div>
+        <Graphs
+          applications={applications}
+          codeChallenges={codeChallenges}
+        ></Graphs>
+      </div>
+    );
   }
 
   return (

@@ -9,12 +9,12 @@ module.exports = {
       borderWidth: {
         3: "3px",
       },
+      textDecorationThickness: {
+        3: "3px",
+      },
     },
     fontFamily: {
       main: ["IBM Plex Mono", "mono"],
-    },
-    textDecorationThickness: {
-      3: "3px",
     },
   },
   plugins: [],

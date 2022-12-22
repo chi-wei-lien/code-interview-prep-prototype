@@ -26,7 +26,7 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
     );
   };
   return (
-    <div className="w-4/5 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit">
+    <div className="w-4/5 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit ">
       <h1 className="pb-5 text-xl text-center underline decoration-orange-300 declaration-3">
         Add Job Application
       </h1>
@@ -41,7 +41,7 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
             type="text"
             onChange={(event) => setCompany(event.target.value)}
             value={company}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
             required
           />
         </div>
@@ -52,7 +52,7 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
             type="text"
             onChange={(event) => setCompanyURL(event.target.value)}
             value={companyURL}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
             required
           />
         </div>
@@ -64,7 +64,7 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
             type="text"
             onChange={(event) => setRole(event.target.value)}
             value={role}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
             required
           />
         </div>
@@ -76,7 +76,7 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
             type="Date"
             onChange={(event) => setCreatedAt(event.target.value)}
             value={createdAt}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
           />
         </div>
         <div className="h-0 basis-full"></div>

@@ -40,6 +40,18 @@ function App() {
   return (
     <div>
       <Header></Header>
+      <div className="w-full h-0.5 bg-slate-800 mb-5"></div>
+      <div className="flex justify-center mb-7">
+        <div className="px-5 py-1 rounded-full bg-yellow-theme">
+          <button>Table</button>
+        </div>
+        <div className="px-5 py-1 rounded-full bg-yellow-theme">
+          <button>Graph</button>
+        </div>
+        <div className="px-5 py-1 rounded-full bg-yellow-theme">
+          <button>About</button>
+        </div>
+      </div>
       <DashBoard></DashBoard>
       <GoogleLogin
         onSuccess={(credentialResponse) => {

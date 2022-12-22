@@ -30,7 +30,7 @@ const DashBoard = () => {
   }, []);
 
   return (
-    <div className="flex flex-row flex-wrap justify-center w-full bg-slate-50">
+    <div className="flex flex-row flex-wrap justify-center w-full bg-white">
       <ApplicationForm setApplications={setApplications}></ApplicationForm>
       <div className="h-4 basis-full"></div>
       <CodeChallengeForm

@@ -96,7 +96,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   <input
                     value={newCompany}
                     onChange={(event) => setNewCompany(event.target.value)}
-                    className="px-6 py-1 mb-1"
+                    className="px-6 py-1 mb-1 border border-slate-800"
                     size={10}
                   />
                   <br></br>
@@ -104,7 +104,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   <input
                     value={newCompanyURL}
                     onChange={(event) => setNewCompanyURL(event.target.value)}
-                    className="px-6 py-1"
+                    className="px-6 py-1 border border-slate-800"
                     size={10}
                   />
                 </td>
@@ -113,7 +113,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                     type={"Date"}
                     value={dateToString(new Date(newCreatedAt))}
                     onChange={(event) => setNewCreatedAt(event.target.value)}
-                    className="px-6 py-1"
+                    className="px-6 py-1 border border-slate-800"
                     size={10}
                   />
                 </td>
@@ -121,7 +121,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   <input
                     value={newRole}
                     onChange={(event) => setNewRole(event.target.value)}
-                    className="px-6 py-1"
+                    className="px-6 py-1 border border-slate-800"
                     size={10}
                   />
                 </td>

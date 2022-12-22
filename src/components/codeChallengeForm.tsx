@@ -43,7 +43,7 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
             type="text"
             onChange={(event) => setChallenge(event.target.value)}
             value={challenge}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
             required
           />
         </div>
@@ -54,7 +54,7 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
             type="text"
             onChange={(event) => setChallengeURL(event.target.value)}
             value={challengeURL}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
             required
           />
         </div>
@@ -66,7 +66,7 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
             type="Date"
             onChange={(event) => setCreatedAt(event.target.value)}
             value={createdAt}
-            className="w-full p-1 mt-1 text-slate-600"
+            className="w-full p-1 mt-1 border text-slate-600 border-slate-800"
           />
         </div>
         <div className="h-0 basis-full"></div>

@@ -96,7 +96,7 @@ const CodeChallengeTable = ({
                   <input
                     value={newChallenge}
                     onChange={(event) => setNewChallenge(event.target.value)}
-                    className="px-6 py-1"
+                    className="px-6 py-1 border border-slate-800"
                     size={10}
                   />
                   <br></br>

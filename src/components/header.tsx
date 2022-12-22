@@ -13,11 +13,11 @@ const Header = () => {
           </h3>
         </div>
         <div className="pt-8 text-center w-72">
-          Start tracking your
+          Start tracking your{" "}
           <span className="underline decoration-sky-300 decoration-3">
             code interview prep
-          </span>
-          and
+          </span>{" "}
+          and{" "}
           <span className="underline decoration-orange-300 decoration-3">
             job applications
           </span>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import CodeChallenge from "../utils/CodeChallenge";
+import dateToString from "../utils/DateToString";
 
 interface ITableProps {
   codeChallenges: CodeChallenge[];
@@ -77,16 +78,16 @@ const CodeChallengeTable = ({
   };
 
   return (
-    <table>
+    <table className="w-3/5 text-left border table-auto">
       <thead>
-        <tr>
-          <th>Code Challenge</th>
-          <th>Code Challenge URL</th>
-          <th>Finish Date</th>
-          <th>Edit</th>
+        <tr className="text-white bg-sky-300">
+          <th className="px-6 py-3">Code Challenge</th>
+          <th className="px-6 py-3">Code Challenge URL</th>
+          <th className="px-6 py-3">Finish Date</th>
+          <th className="px-6 py-3">Edit</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="text-slate-700">
         {codeChallenges.map((codeChallenge) => {
           if (inEditMode.status && inEditMode.rowKey === codeChallenge.id) {
             return (
@@ -95,19 +96,25 @@ const CodeChallengeTable = ({
                   <input
                     value={newChallenge}
                     onChange={(event) => setNewChallenge(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
                   <input
                     value={newChallengeURL}
                     onChange={(event) => setNewChallengeURL(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
                   <input
                     type={"Date"}
-                    value={newCreatedAt}
+                    value={dateToString(new Date(newCreatedAt))}
                     onChange={(event) => setNewCreatedAt(event.target.value)}
+                    className="px-6 py-3"
+                    size={10}
                   />
                 </td>
                 <td>
@@ -120,26 +127,36 @@ const CodeChallengeTable = ({
                         newCreatedAt
                       )
                     }
+                    className="underline bg-sky-200"
                   >
                     Save
                   </button>
-                  <button onClick={() => remove(codeChallenge.id)}>
+                  <span>, </span>
+                  <button
+                    onClick={() => remove(codeChallenge.id)}
+                    className="underline bg-red-200"
+                  >
                     Remove
                   </button>
-
-                  <button onClick={() => onCancel()}>Cancel</button>
+                  <span>, </span>
+                  <button
+                    onClick={() => onCancel()}
+                    className="underline bg-yellow-theme"
+                  >
+                    Cancel
+                  </button>
                 </td>
               </tr>
             );
           } else {
             return (
-              <tr key={codeChallenge.id}>
-                <td>{codeChallenge.challenge} </td>
-                <td>{codeChallenge.challengeURL} </td>
-                <td>{codeChallenge.createdAt} </td>
-                <td>
+              <tr key={codeChallenge.id} className="border-b">
+                <td className="px-6 py-3">{codeChallenge.challenge} </td>
+                <td className="px-6 py-3">{codeChallenge.challengeURL} </td>
+                <td className="px-6 py-3">{codeChallenge.createdAt} </td>
+                <td className="px-6 py-3">
                   <button
-                    className={"btn-primary"}
+                    className={"btn-primary bg-yellow-theme underline"}
                     onClick={() =>
                       onEdit(
                         codeChallenge.id,

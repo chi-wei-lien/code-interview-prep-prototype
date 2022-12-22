@@ -6,6 +6,7 @@ import CodeChallenge from "../utils/CodeChallenge";
 import ApplicationForm from "./applicationForm";
 import ApplicationTable from "./applicationTable";
 import CodeChallengeForm from "./codeChallengeForm";
+import CodeChallengeTable from "./codeChallengeTable";
 
 const DashBoard = () => {
   const [applications, setApplications] = useState<Application[]>([]);
@@ -40,6 +41,12 @@ const DashBoard = () => {
         applications={applications}
         setApplications={setApplications}
       ></ApplicationTable>
+      <div className="h-4 basis-full"></div>
+
+      <CodeChallengeTable
+        codeChallenges={codeChallenges}
+        setCodeChallenge={setCodeChallenges}
+      ></CodeChallengeTable>
     </div>
   );
 };

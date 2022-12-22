@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Application from "../utils/Application";
+import dateToString from "../utils/DateToString";
 
 interface ITableProps {
   applications: Application[];
@@ -16,17 +17,6 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   const [newCompanyURL, setNewCompanyURL] = useState("");
   const [newRole, setNewRole] = useState("");
   const [newCreatedAt, setNewCreatedAt] = useState("");
-
-  function dateToString(date: Date) {
-    let month = "" + (date.getMonth() + 1);
-    let day = "" + date.getDate();
-    let year = date.getFullYear();
-
-    if (month.length < 2) month = "0" + month;
-    if (day.length < 2) day = "0" + day;
-
-    return [year, month, day].join("-");
-  }
 
   const onEdit = (
     id: number,
@@ -87,9 +77,9 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   };
 
   return (
-    <table className="text-left border table-auto">
+    <table className="w-3/5 text-left border table-auto">
       <thead>
-        <tr className="text-white bg-orange-300 ">
+        <tr className="text-white bg-orange-300">
           <th className="px-6 py-3">Company</th>
           <th className="px-6 py-3">Company URL</th>
           <th className="px-6 py-3">Applied Date</th>

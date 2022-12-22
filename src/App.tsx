@@ -56,16 +56,6 @@ function App() {
       >
         logout
       </button>
-      {/* <ApplicationForm setApplications={setApplications}></ApplicationForm>
-      <ApplicationTable
-        applications={applications}
-        setApplications={setApplications}
-      ></ApplicationTable> */}
-
-      <CodeChallengeTable
-        codeChallenges={codeChallenges}
-        setCodeChallenge={setCodeChallenges}
-      ></CodeChallengeTable>
     </div>
   );
 }

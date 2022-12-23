@@ -16,6 +16,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   const [newCompany, setNewCompany] = useState("");
   const [newCompanyURL, setNewCompanyURL] = useState("");
   const [newRole, setNewRole] = useState("");
+  const [newStatus, setNewStatus] = useState("");
   const [newCreatedAt, setNewCreatedAt] = useState("");
 
   const onEdit = (
@@ -23,6 +24,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
     currCompany: string,
     currCompanyURL: string,
     currRole: string,
+    currStatus: string,
     currCreateAt: string
   ) => {
     setInEditMode({
@@ -32,6 +34,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
     setNewCompany(currCompany);
     setNewCompanyURL(currCompanyURL);
     setNewRole(currRole);
+    setNewStatus(currStatus);
     setNewCreatedAt(currCreateAt);
   };
 
@@ -40,6 +43,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
     newCompany: string,
     newCompanyURL: string,
     newRole: string,
+    newStatus: string,
     newCreatedAt: string
   ) => {
     Application.updateApplication(
@@ -47,6 +51,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
       newCompanyURL,
       newCreatedAt,
       newRole,
+      newStatus,
       id
     ).then(async () => {
       onCancel();
@@ -74,6 +79,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
     setNewCompanyURL("");
     setNewRole("");
     setNewCreatedAt("");
+    setNewStatus("");
   };
 
   return (
@@ -83,6 +89,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
           <th className="px-6 py-3">Company</th>
           <th className="px-6 py-3">Applied Date</th>
           <th className="px-6 py-3">Applied Role</th>
+          <th className="px-6 py-3">Status</th>
           <th className="px-6 py-3">Action</th>
         </tr>
       </thead>
@@ -126,6 +133,14 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                   />
                 </td>
                 <td>
+                  <input
+                    value={newStatus}
+                    onChange={(event) => setNewStatus(event.target.value)}
+                    className="px-6 py-1 border border-slate-800"
+                    size={10}
+                  />
+                </td>
+                <td>
                   <button
                     onClick={() =>
                       onSave(
@@ -133,6 +148,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                         newCompany,
                         newCompanyURL,
                         newRole,
+                        newStatus,
                         newCreatedAt
                       )
                     }
@@ -168,6 +184,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                 {/* <td className="px-6 py-3">{application.companyURL} </td> */}
                 <td className="px-6 py-3">{application.createdAt} </td>
                 <td className="px-6 py-3">{application.role} </td>
+                <td className="px-6 py-3">{application.status} </td>
                 <td className="px-6 py-3">
                   <button
                     className={"btn-primary bg-yellow-theme underline"}
@@ -177,6 +194,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
                         application.company,
                         application.companyURL,
                         application.role,
+                        application.status,
                         application.createdAt
                       )
                     }

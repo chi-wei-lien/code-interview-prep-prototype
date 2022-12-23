@@ -4,19 +4,22 @@ class Application {
   public createdAt;
   public id;
   public role;
+  public status;
 
   constructor(
     company: string,
     companyURL: string,
     createdAt: string,
     id: number,
-    role: string
+    role: string,
+    status: string
   ) {
     this.company = company;
     this.companyURL = companyURL;
     this.createdAt = new Date(createdAt).toDateString();
     this.id = id;
     this.role = role;
+    this.status = status;
   }
 
   static getApplications = async (): Promise<Application[]> => {
@@ -38,7 +41,8 @@ class Application {
                 application.companyURL,
                 application.createdAt,
                 application.id,
-                application.role
+                application.role,
+                application.status
               )
             );
           }
@@ -74,6 +78,7 @@ class Application {
     companyURL: string,
     createdAt: string,
     role: string,
+    status: string,
     id: number
   ) => {
     await fetch(`${process.env.REACT_APP_API}/application`, {
@@ -83,6 +88,7 @@ class Application {
         company,
         companyURL,
         role,
+        status,
         createdAt,
         id,
       }),

@@ -24,6 +24,7 @@ const Logout = ({
         <button
           onClick={() => {
             handleLogout(setApplications, setCodeChallenges);
+            localStorage.setItem("loggedIn", JSON.stringify(false));
             setLoggedIn(false);
             setPage("table");
           }}

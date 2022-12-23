@@ -23,6 +23,7 @@ const Login = ({
           onSuccess={(credentialResponse) => {
             handleLogin(credentialResponse, setApplications, setCodeChallenges);
             setLoggedIn(true);
+            localStorage.setItem("loggedIn", JSON.stringify(true));
           }}
           onError={() => {
             console.error("Login Failed");

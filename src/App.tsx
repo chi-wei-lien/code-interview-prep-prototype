@@ -19,6 +19,7 @@ function App() {
 
   const [page, setPage] = useState("table");
   const [loggedIn, setLoggedIn] = useState(false);
+  console.log(loggedIn);
 
   const fetchApplications = async () => {
     await Application.getApplications().then((apps: Application[]) => {

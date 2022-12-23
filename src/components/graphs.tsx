@@ -126,8 +126,10 @@ const Graphs = ({ applications, codeChallenges }: IGraphsProps) => {
   };
 
   return (
-    <div>
-      <Line options={options} data={data} />
+    <div className="flex flex-row flex-wrap justify-center w-full bg-white">
+      <div className="w-1/2 rounded">
+        <Line options={options} data={data} />
+      </div>
     </div>
   );
 };

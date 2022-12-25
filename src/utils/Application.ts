@@ -42,7 +42,7 @@ class Application {
                 application.createdAt,
                 application.id,
                 application.role,
-                application.status
+                application.statusValue
               )
             );
           }

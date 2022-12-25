@@ -35,7 +35,7 @@ function App() {
   useEffect(() => {
     fetchApplications();
     fetchCodeChallenges();
-    setLoggedIn(Boolean(JSON.stringify(localStorage.getItem("loggedIn"))));
+    setLoggedIn(localStorage.getItem("loggedIn") === "true");
   }, []);
 
   let pageContent;

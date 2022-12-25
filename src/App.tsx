@@ -5,6 +5,9 @@ import Navbar from "./components/navbar";
 
 import "./index.css";
 
+// utils
+import checkLogin from "./utils/checkLogin";
+
 // components
 import Header from "./components/header";
 import DashBoard from "./components/dashboard";
@@ -32,10 +35,20 @@ function App() {
     });
   };
 
-  useEffect(() => {
-    fetchApplications();
-    fetchCodeChallenges();
+  const runCheckLogin = async () => {
+    return checkLogin();
+  };
+
+  const initializeState = async () => {
+    if (await runCheckLogin()) {
+      fetchApplications();
+      fetchCodeChallenges();
+    }
     setLoggedIn(localStorage.getItem("loggedIn") === "true");
+  };
+
+  useEffect(() => {
+    initializeState();
   }, []);
 
   let pageContent;

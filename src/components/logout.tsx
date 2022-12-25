@@ -19,8 +19,10 @@ const Logout = ({
 }: ILogoutProps) => {
   return (
     <div className="flex flex-row flex-wrap justify-center w-full bg-white h-80">
-      <div className="flex flex-col items-center justify-center w-1/3 h-48 border-dashed border-3 border-slate-300">
-        <h1 className="pb-5 text-2xl underline decoration-orange-300">Login</h1>
+      <div className="flex flex-col items-center justify-center w-1/3 h-48 border-dashed min-w-fit border-3 border-slate-300">
+        <h1 className="pb-5 text-2xl underline decoration-orange-300">
+          Logout
+        </h1>
         <button
           onClick={() => {
             handleLogout(setApplications, setCodeChallenges);

@@ -17,18 +17,24 @@ const Login = ({
 }: ILoginProps) => {
   return (
     <div className="flex flex-row flex-wrap justify-center w-full bg-white h-80">
-      <div className="flex flex-col items-center justify-center w-1/3 h-48 border-dashed border-3 border-slate-300">
+      <div className="flex flex-col items-center justify-center h-48 border-dashed min-w-fit border-3 border-slate-300">
         <h1 className="pb-5 text-2xl underline decoration-orange-300">Login</h1>
-        <GoogleLogin
-          onSuccess={(credentialResponse) => {
-            handleLogin(credentialResponse, setApplications, setCodeChallenges);
-            setLoggedIn(true);
-            localStorage.setItem("loggedIn", JSON.stringify(true));
-          }}
-          onError={() => {
-            console.error("Login Failed");
-          }}
-        />
+        <div className="p-5">
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              handleLogin(
+                credentialResponse,
+                setApplications,
+                setCodeChallenges
+              );
+              setLoggedIn(true);
+              localStorage.setItem("loggedIn", JSON.stringify(true));
+            }}
+            onError={() => {
+              console.error("Login Failed");
+            }}
+          />
+        </div>
       </div>
     </div>
   );

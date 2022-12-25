@@ -72,7 +72,7 @@ const Graphs = ({ applications, codeChallenges }: IGraphsProps) => {
   }
 
   for (let i = 0; i < codeChallenges.length; ++i) {
-    dateKey = dateToString(new Date(applications[i].createdAt));
+    dateKey = dateToString(new Date(codeChallenges[i].createdAt));
     if (codeChallengeMap.has(dateKey)) {
       codeChallengeMap.set(dateKey, codeChallengeMap.get(dateKey) + 1);
     } else {

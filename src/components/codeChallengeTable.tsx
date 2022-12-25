@@ -104,7 +104,7 @@ const CodeChallengeTable = ({
                   <input
                     value={newChallengeURL}
                     onChange={(event) => setNewChallengeURL(event.target.value)}
-                    className="px-6 py-1"
+                    className="px-6 py-1 border border-slate-800"
                     size={10}
                   />
                 </td>

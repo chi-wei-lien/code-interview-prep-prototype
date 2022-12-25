@@ -83,7 +83,7 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   };
 
   return (
-    <table className="w-3/5 text-left border table-auto">
+    <table className="w-4/5 text-left border table-fixed">
       <thead>
         <tr className="text-white bg-orange-300">
           <th className="px-6 py-3">Company</th>

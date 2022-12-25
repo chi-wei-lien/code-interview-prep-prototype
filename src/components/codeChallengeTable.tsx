@@ -78,7 +78,7 @@ const CodeChallengeTable = ({
   };
 
   return (
-    <table className="w-3/5 text-left border table-auto">
+    <table className="w-4/5 text-left border table-fixed">
       <thead>
         <tr className="text-white bg-sky-300">
           <th className="px-6 py-3">Code Challenge</th>

@@ -3,16 +3,19 @@ import { Dispatch } from "react";
 import CodeChallenge from "../utils/CodeChallenge";
 import Application from "../utils/Application";
 import handleLogin from "../utils/handleLogin";
+import Status from "../utils/Status";
 
 interface ILoginProps {
   setApplications: Dispatch<React.SetStateAction<Application[]>>;
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
+  setStatuses: Dispatch<React.SetStateAction<Status[]>>;
   setLoggedIn: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Login = ({
   setApplications,
   setCodeChallenges,
+  setStatuses,
   setLoggedIn,
 }: ILoginProps) => {
   return (
@@ -25,7 +28,8 @@ const Login = ({
               handleLogin(
                 credentialResponse,
                 setApplications,
-                setCodeChallenges
+                setCodeChallenges,
+                setStatuses
               );
               setLoggedIn(true);
               localStorage.setItem("loggedIn", JSON.stringify(true));

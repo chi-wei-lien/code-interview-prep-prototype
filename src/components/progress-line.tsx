@@ -3,27 +3,6 @@ import Application from "../utils/Application";
 import CodeChallenge from "../utils/CodeChallenge";
 import dateToString from "../utils/DateToString";
 
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
 const options = {
   responsive: true,
   plugins: {
@@ -32,7 +11,7 @@ const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Line Chart",
+      text: "Progress Line Chart",
     },
     scales: {
       xAxes: [

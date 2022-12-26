@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import Application from "./utils/Application";
-import CodeChallenge from "./utils/CodeChallenge";
 import Navbar from "./components/navbar";
 
 import "./index.css";
 
 // utils
 import checkLogin from "./utils/checkLogin";
+import Status from "./utils/Status";
+import Application from "./utils/Application";
+import CodeChallenge from "./utils/CodeChallenge";
 
 // components
 import Header from "./components/header";
@@ -16,9 +17,33 @@ import Login from "./components/login";
 import Logout from "./components/logout";
 import About from "./components/about";
 
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [codeChallenges, setCodeChallenges] = useState<CodeChallenge[]>([]);
+  const [statuses, setStatuses] = useState<Status[]>([]);
 
   const [page, setPage] = useState("table");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,6 +60,12 @@ function App() {
     });
   };
 
+  const fetchStatuses = async () => {
+    Status.getStatuses().then((statuses: Status[]) => {
+      setStatuses(statuses);
+    });
+  };
+
   const runCheckLogin = async () => {
     return checkLogin();
   };
@@ -43,6 +74,7 @@ function App() {
     if (await runCheckLogin()) {
       fetchApplications();
       fetchCodeChallenges();
+      fetchStatuses();
     }
     setLoggedIn(localStorage.getItem("loggedIn") === "true");
   };
@@ -69,6 +101,7 @@ function App() {
           setApplications={setApplications}
           setCodeChallenges={setCodeChallenges}
           setLoggedIn={setLoggedIn}
+          setStatuses={setStatuses}
         ></Login>
       );
     }
@@ -81,6 +114,7 @@ function App() {
           <Graphs
             applications={applications}
             codeChallenges={codeChallenges}
+            statuses={statuses}
           ></Graphs>
         </div>
       );
@@ -90,6 +124,7 @@ function App() {
           setApplications={setApplications}
           setCodeChallenges={setCodeChallenges}
           setLoggedIn={setLoggedIn}
+          setStatuses={setStatuses}
         ></Login>
       );
     }

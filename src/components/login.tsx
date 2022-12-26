@@ -32,7 +32,7 @@ const Login = ({
                 setStatuses
               );
               setLoggedIn(true);
-              localStorage.setItem("loggedIn", JSON.stringify(true));
+              // localStorage.setItem("loggedIn", JSON.stringify(true));
             }}
             onError={() => {
               console.error("Login Failed");

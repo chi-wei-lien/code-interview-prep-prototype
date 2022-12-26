@@ -14,13 +14,17 @@ interface IGraphsProps {
 const Graphs = ({ applications, codeChallenges, statuses }: IGraphsProps) => {
   return (
     <div className="flex flex-row flex-wrap justify-center w-full bg-white">
-      <div className="w-1/2 rounded">
+      <div className="flex justify-center w-full rounded h-96 sm:w-96">
         <ProgressLine
           applications={applications}
           codeChallenges={codeChallenges}
         ></ProgressLine>
+      </div>
+      <div className="flex justify-center w-full rounded h-96 sm:w-96">
         <StatusPie applications={applications} statuses={statuses}></StatusPie>
       </div>
+      {/* <div className="rounded w-96">
+      </div> */}
     </div>
   );
 };

@@ -26,8 +26,8 @@ const ApplicationForm = ({ setApplications }: IApplicationForm) => {
     );
   };
   return (
-    <div className="w-4/5 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit ">
-      <h1 className="pb-5 text-xl text-center underline decoration-orange-300 declaration-3">
+    <div className="w-4/5 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit">
+      <h1 className="pb-5 text-xl text-center underline decoration-2 decoration-orange-300 declaration-3">
         Add Job Application
       </h1>
       <form

@@ -75,8 +75,10 @@ function App() {
       fetchApplications();
       fetchCodeChallenges();
       fetchStatuses();
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
     }
-    setLoggedIn(localStorage.getItem("loggedIn") === "true");
   };
 
   useEffect(() => {

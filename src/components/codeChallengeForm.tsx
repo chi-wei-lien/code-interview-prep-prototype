@@ -29,7 +29,7 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
   };
   return (
     <div className="w-4/5 p-5 border-dashed border-slate-300 border-3 min-h-48 h-fit">
-      <h1 className="pb-5 text-xl text-center underline decoration-sky-300 declaration-3">
+      <h1 className="pb-5 text-xl text-center underline decoration-2 decoration-sky-300 declaration-3">
         Add Code Challenge
       </h1>
       <form
@@ -75,33 +75,6 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
         </button>
       </form>
     </div>
-    // <form onSubmit={handleSubmit}>
-    //   <label>
-    //     Enter code challenge:
-    //     <input
-    //       type="text"
-    //       onChange={(event) => setChallenge(event.target.value)}
-    //       value={challenge}
-    //     />
-    //   </label>
-    //   <label>
-    //     Enter code challenge url:
-    //     <input
-    //       type="text"
-    //       onChange={(event) => setChallengeURL(event.target.value)}
-    //       value={challengeURL}
-    //     />
-    //   </label>
-    //   <label>
-    //     Enter createdAt:
-    //     <input
-    //       type="Date"
-    //       onChange={(event) => setCreatedAt(event.target.value)}
-    //       value={createdAt}
-    //     />
-    //   </label>
-    //   <input type="submit" />
-    // </form>
   );
 };
 

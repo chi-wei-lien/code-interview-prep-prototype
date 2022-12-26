@@ -83,14 +83,24 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
   };
 
   return (
-    <table className="w-4/5 text-left border table-fixed">
+    <table className="w-4/5 text-center border table-fixed sm:text-left border-slate-800">
       <thead>
-        <tr className="text-white bg-orange-300">
-          <th className="px-6 py-3">Company</th>
-          <th className="px-6 py-3">Applied Date</th>
-          <th className="px-6 py-3">Applied Role</th>
-          <th className="px-6 py-3">Status</th>
-          <th className="px-6 py-3">Action</th>
+        <tr className="text-white bg-orange-300 border border-slate-800">
+          <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
+            Company
+          </th>
+          <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
+            Applied Date
+          </th>
+          <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
+            Applied Role
+          </th>
+          <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
+            Status
+          </th>
+          <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
+            Action
+          </th>
         </tr>
       </thead>
       <tbody className="text-slate-700">
@@ -175,17 +185,26 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
             );
           } else {
             return (
-              <tr key={application.id} className="border-b">
-                <td className="px-6 py-3 underline">
+              <tr
+                key={application.id}
+                className="text-center border-b border-slate-800 sm:text-left"
+              >
+                <td className="text-sm underline sm:text-md sm:py-3 sm:px-6">
                   <a href={application.companyURL} target="_blank">
                     {application.company}
                   </a>
                 </td>
                 {/* <td className="px-6 py-3">{application.companyURL} </td> */}
-                <td className="px-6 py-3">{application.createdAt} </td>
-                <td className="px-6 py-3">{application.role} </td>
-                <td className="px-6 py-3">{application.status} </td>
-                <td className="px-6 py-3">
+                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                  {application.createdAt}{" "}
+                </td>
+                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                  {application.role}{" "}
+                </td>
+                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                  {application.status}{" "}
+                </td>
+                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
                   <button
                     className={"btn-primary bg-yellow-theme underline"}
                     onClick={() =>

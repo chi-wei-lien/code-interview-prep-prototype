@@ -1,14 +1,18 @@
 class Status {
+  public id;
   public value;
   public userId;
+  public color;
 
-  constructor(value: string, userId: number) {
+  constructor(id: number, value: string, userId: number, color: string) {
+    this.id = id;
     this.value = value;
     this.userId = userId;
+    this.color = color;
   }
 
-  static getStatuses = async (): Promise<Status[]> => {
-    const fetchedStatuses: Status[] = [];
+  static getStatuses = async (): Promise<Map<number, Status>> => {
+    const fetchedStatuses: Map<number, Status> = new Map();
     return new Promise(async (resolve, reject) => {
       await fetch(`${process.env.REACT_APP_API}/status`, {
         method: "GET",
@@ -20,8 +24,25 @@ class Status {
         .then((response) => response.json())
         .then((response) => {
           for (const status of response.statuses) {
-            fetchedStatuses.push(new Status(status.value, status.userId));
+            fetchedStatuses.set(
+              status.id,
+              new Status(
+                status.id,
+                status.value,
+                status.userId,
+                `#${status.color}`
+              )
+            );
+            // fetchedStatuses.push(
+            //   new Status(
+            //     status.id,
+            //     status.value,
+            //     status.userId,
+            //     `#${status.color}`
+            //   )
+            // );
           }
+          console.log(fetchedStatuses);
           resolve(fetchedStatuses);
         })
         .catch((err) => reject(err));

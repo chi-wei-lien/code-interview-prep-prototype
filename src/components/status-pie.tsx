@@ -18,23 +18,33 @@ const options = {
 
 interface IStatusPieProps {
   applications: Application[];
-  statuses: Status[];
+  statuses: Map<number, Status>;
 }
 
 const StatusPie = ({ applications, statuses }: IStatusPieProps) => {
   const statusIndexMap = new Map();
   let statusIndex = 0;
 
-  const statusData = new Array(statuses.length).fill(0);
-  const statusLabel = [];
+  const statusData = new Array(statuses.size).fill(0);
+  const statusLabel: string[] = [];
 
-  for (const status of statuses) {
+  statuses.forEach((status: Status, key: number) => {
     statusIndexMap.set(status.value, statusIndex);
     statusLabel.push(status.value);
     statusIndex++;
-  }
+  });
+
+  // for (const status of statuses.keys()) {
+  //   statusIndexMap.set(statuses.get(status).value, statusIndex);
+  //   statusLabel.push(status.value);
+  //   statusIndex++;
+  // }
+  let statusId;
+  let statusValue;
   for (const application of applications) {
-    statusData[statusIndexMap.get(application.status)]++;
+    statusId = application.statusId;
+    statusValue = statuses.get(statusId)!.value;
+    statusData[statusIndexMap.get(statusValue)]++;
   }
 
   const data = {

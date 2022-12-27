@@ -2,6 +2,7 @@ import { useState, useEffect, Dispatch } from "react";
 
 import Application from "../utils/Application";
 import CodeChallenge from "../utils/CodeChallenge";
+import Status from "../utils/Status";
 
 import ApplicationForm from "./applicationForm";
 import ApplicationTable from "./applicationTable";
@@ -13,6 +14,8 @@ interface IDashBoardProps {
   setApplications: Dispatch<React.SetStateAction<Application[]>>;
   codeChallenges: CodeChallenge[];
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
+  statuses: Map<number, Status>;
+  setStatuses: React.Dispatch<React.SetStateAction<Map<number, Status>>>;
 }
 
 const DashBoard = ({
@@ -20,6 +23,8 @@ const DashBoard = ({
   setApplications,
   codeChallenges,
   setCodeChallenges,
+  statuses,
+  setStatuses,
 }: IDashBoardProps) => {
   return (
     <div className="flex flex-row flex-wrap justify-center w-full bg-white">
@@ -32,6 +37,8 @@ const DashBoard = ({
       <ApplicationTable
         applications={applications}
         setApplications={setApplications}
+        statuses={statuses}
+        setStatuses={setStatuses}
       ></ApplicationTable>
       <div className="h-4 basis-full"></div>
 

@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import Application from "../utils/Application";
+import Status from "../utils/Status";
 import dateToString from "../utils/DateToString";
 
 interface ITableProps {
   applications: Application[];
   setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
+  statuses: Map<number, Status>;
+  setStatuses: React.Dispatch<React.SetStateAction<Map<number, Status>>>;
 }
 
-const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
+const ApplicationTable = ({
+  applications,
+  setApplications,
+  statuses,
+  setStatuses,
+}: ITableProps) => {
   const [inEditMode, setInEditMode] = useState({
     status: false,
     rowKey: -1,
@@ -57,6 +65,9 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
       onCancel();
       await Application.getApplications().then((apps: Application[]) => {
         setApplications(apps);
+      });
+      await Status.getStatuses().then((statuses) => {
+        setStatuses(statuses);
       });
     });
   };
@@ -184,45 +195,53 @@ const ApplicationTable = ({ applications, setApplications }: ITableProps) => {
               </tr>
             );
           } else {
-            return (
-              <tr
-                key={application.id}
-                className="text-center border-b border-slate-800 sm:text-left"
-              >
-                <td className="text-sm underline sm:text-md sm:py-3 sm:px-6">
-                  <a href={application.companyURL} target="_blank">
-                    {application.company}
-                  </a>
-                </td>
-                {/* <td className="px-6 py-3">{application.companyURL} </td> */}
-                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
-                  {application.createdAt}{" "}
-                </td>
-                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
-                  {application.role}{" "}
-                </td>
-                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
-                  {application.status}{" "}
-                </td>
-                <td className="text-sm sm:text-md sm:py-3 sm:px-6">
-                  <button
-                    className={"btn-primary bg-yellow-theme underline"}
-                    onClick={() =>
-                      onEdit(
-                        application.id,
-                        application.company,
-                        application.companyURL,
-                        application.role,
-                        application.status,
-                        application.createdAt
-                      )
-                    }
-                  >
-                    Edit
-                  </button>
-                </td>
-              </tr>
-            );
+            const status = statuses.get(application.statusId);
+            if (status) {
+              return (
+                <tr
+                  key={application.id}
+                  className="text-center border-b border-slate-800 sm:text-left"
+                >
+                  <td className="text-sm underline sm:text-md sm:py-3 sm:px-6">
+                    <a href={application.companyURL} target="_blank">
+                      {application.company}
+                    </a>
+                  </td>
+                  {/* <td className="px-6 py-3">{application.companyURL} </td> */}
+                  <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                    {application.createdAt}{" "}
+                  </td>
+                  <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                    {application.role}{" "}
+                  </td>
+                  <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                    <div
+                      className={"px-2 rounded-full w-fit"}
+                      style={{ backgroundColor: status.color }}
+                    >
+                      {status.value}{" "}
+                    </div>
+                  </td>
+                  <td className="text-sm sm:text-md sm:py-3 sm:px-6">
+                    <button
+                      className={"btn-primary bg-yellow-theme underline"}
+                      onClick={() =>
+                        onEdit(
+                          application.id,
+                          application.company,
+                          application.companyURL,
+                          application.role,
+                          status.value,
+                          application.createdAt
+                        )
+                      }
+                    >
+                      Edit
+                    </button>
+                  </td>
+                </tr>
+              );
+            }
           }
         })}
       </tbody>

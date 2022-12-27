@@ -4,7 +4,7 @@ class Application {
   public createdAt;
   public id;
   public role;
-  public status;
+  public statusId;
 
   constructor(
     company: string,
@@ -12,14 +12,14 @@ class Application {
     createdAt: string,
     id: number,
     role: string,
-    status: string
+    statusId: number
   ) {
     this.company = company;
     this.companyURL = companyURL;
     this.createdAt = new Date(createdAt).toDateString();
     this.id = id;
     this.role = role;
-    this.status = status;
+    this.statusId = statusId;
   }
 
   static getApplications = async (): Promise<Application[]> => {
@@ -42,7 +42,7 @@ class Application {
                 application.createdAt,
                 application.id,
                 application.role,
-                application.statusValue
+                application.statusId
               )
             );
           }

@@ -8,7 +8,7 @@ import Status from "../utils/Status";
 interface ILoginProps {
   setApplications: Dispatch<React.SetStateAction<Application[]>>;
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
-  setStatuses: Dispatch<React.SetStateAction<Status[]>>;
+  setStatuses: Dispatch<React.SetStateAction<Map<number, Status>>>;
   setLoggedIn: Dispatch<React.SetStateAction<boolean>>;
 }
 

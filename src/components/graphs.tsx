@@ -8,7 +8,7 @@ import StatusPie from "./status-pie";
 interface IGraphsProps {
   applications: Application[];
   codeChallenges: CodeChallenge[];
-  statuses: Status[];
+  statuses: Map<number, Status>;
 }
 
 const Graphs = ({ applications, codeChallenges, statuses }: IGraphsProps) => {

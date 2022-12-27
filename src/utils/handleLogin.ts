@@ -8,7 +8,7 @@ const handleLogin = async (
   credentialResponse: CredentialResponse,
   setApplications: Dispatch<React.SetStateAction<Application[]>>,
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>,
-  setStatuses: Dispatch<React.SetStateAction<Status[]>>
+  setStatuses: Dispatch<React.SetStateAction<Map<number, Status>>>
 ) => {
   await fetch(`${process.env.REACT_APP_API}/api/auth/google`, {
     method: "POST",
@@ -28,7 +28,7 @@ const handleLogin = async (
         setCodeChallenges(challenges);
       }
     );
-    await Status.getStatuses().then((statuses: Status[]) => {
+    await Status.getStatuses().then((statuses) => {
       setStatuses(statuses);
     });
   });

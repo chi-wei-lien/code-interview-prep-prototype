@@ -23,8 +23,6 @@ const Graphs = ({ applications, codeChallenges, statuses }: IGraphsProps) => {
       <div className="flex justify-center w-full rounded h-96 sm:w-96">
         <StatusPie applications={applications} statuses={statuses}></StatusPie>
       </div>
-      {/* <div className="rounded w-96">
-      </div> */}
     </div>
   );
 };

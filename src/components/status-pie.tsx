@@ -27,10 +27,12 @@ const StatusPie = ({ applications, statuses }: IStatusPieProps) => {
 
   const statusData = new Array(statuses.size).fill(0);
   const statusLabel: string[] = [];
+  const backgroundColors: string[] = [];
 
   statuses.forEach((status: Status, key: number) => {
     statusIndexMap.set(status.value, statusIndex);
     statusLabel.push(status.value);
+    backgroundColors.push(status.color);
     statusIndex++;
   });
 
@@ -53,7 +55,7 @@ const StatusPie = ({ applications, statuses }: IStatusPieProps) => {
       {
         label: "Applications",
         data: statusData,
-        backgroundColor: "#fdba74",
+        backgroundColor: backgroundColors,
         hoverOffset: 4,
       },
     ],

@@ -33,14 +33,6 @@ class Status {
                 `#${status.color}`
               )
             );
-            // fetchedStatuses.push(
-            //   new Status(
-            //     status.id,
-            //     status.value,
-            //     status.userId,
-            //     `#${status.color}`
-            //   )
-            // );
           }
           resolve(fetchedStatusesMap);
         })

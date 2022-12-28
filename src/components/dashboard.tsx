@@ -1,4 +1,4 @@
-import { useState, useEffect, Dispatch, MouseEvent, ChangeEvent } from "react";
+import { Dispatch } from "react";
 
 import Application from "../utils/Application";
 import CodeChallenge from "../utils/CodeChallenge";
@@ -8,6 +8,7 @@ import ApplicationForm from "./applicationForm";
 import ApplicationTable from "./applicationTable";
 import CodeChallengeForm from "./codeChallengeForm";
 import CodeChallengeTable from "./codeChallengeTable";
+import StatusSelect from "./statusSelect";
 
 interface IDashBoardProps {
   applications: Application[];
@@ -48,6 +49,7 @@ const DashBoard = ({
           setCodeChallenge={setCodeChallenges}
         ></CodeChallengeTable>
       </div>
+      {/* <StatusSelect statusesMap={statusesMap}></StatusSelect> */}
     </div>
   );
 };

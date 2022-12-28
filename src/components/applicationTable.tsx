@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Application from "../utils/Application";
 import Status from "../utils/Status";
 import dateToString from "../utils/DateToString";
+import StatusSelect from "./statusSelect";
 
 interface ITableProps {
   applications: Application[];
@@ -118,7 +119,7 @@ const ApplicationTable = ({
         {applications.map((application) => {
           if (inEditMode.status && inEditMode.rowKey === application.id) {
             return (
-              <tr key={application.id}>
+              <tr key={application.id} className="border-b border-slate-800">
                 <td>
                   <label className="pl-6">Company Name:</label>
                   <input
@@ -154,12 +155,17 @@ const ApplicationTable = ({
                   />
                 </td>
                 <td>
-                  <input
+                  {/* <input
                     value={newStatus}
                     onChange={(event) => setNewStatus(event.target.value)}
                     className="px-6 py-1 border border-slate-800"
                     size={10}
-                  />
+                  /> */}
+                  <StatusSelect
+                    statusesMap={statusesMap}
+                    newStatus={newStatus}
+                    setNewStatus={setNewStatus}
+                  ></StatusSelect>
                 </td>
                 <td>
                   <button

@@ -1,11 +1,17 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, Dispatch, useEffect, useState } from "react";
 import Status from "../utils/Status";
 
 interface IStatusSelectProps {
   statusesMap: Map<number, Status>;
+  newStatus: string;
+  setNewStatus: Dispatch<React.SetStateAction<string>>;
 }
 
-const StatusSelect = ({ statusesMap }: IStatusSelectProps) => {
+const StatusSelect = ({
+  statusesMap,
+  newStatus,
+  setNewStatus,
+}: IStatusSelectProps) => {
   const statusOptions: Status[] = [];
   const [showStatuses, setShowStatuses] = useState(false);
 
@@ -24,21 +30,30 @@ const StatusSelect = ({ statusesMap }: IStatusSelectProps) => {
     };
   });
 
-  const showStatusesHandler = (event: ChangeEvent) => {
+  const statusesHandler = (event: ChangeEvent<HTMLInputElement>) => {
     event.stopPropagation();
     setShowStatuses(true);
+    setNewStatus(event.target.value);
   };
 
   return (
     <div>
       <input
         className="border-2 border-slate-800"
-        onChange={showStatusesHandler}
+        onChange={statusesHandler}
+        value={newStatus}
       ></input>
       {showStatuses && (
-        <div>
+        <div className="">
           {statusOptions.map((option) => (
-            <div key={option.id}>{option.value}</div>
+            <div
+              key={option.id}
+              onClick={() => setNewStatus(option.value)}
+              className="px-2 rounded-full w-fit hover:cursor-pointer"
+              style={{ backgroundColor: option.color }}
+            >
+              {option.value}
+            </div>
           ))}
         </div>
       )}

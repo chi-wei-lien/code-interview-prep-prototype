@@ -11,8 +11,8 @@ class Status {
     this.color = color;
   }
 
-  static getStatuses = async (): Promise<Map<number, Status>> => {
-    const fetchedStatuses: Map<number, Status> = new Map();
+  static getStatusesMap = async (): Promise<Map<number, Status>> => {
+    const fetchedStatusesMap: Map<number, Status> = new Map();
     return new Promise(async (resolve, reject) => {
       await fetch(`${process.env.REACT_APP_API}/status`, {
         method: "GET",
@@ -24,7 +24,7 @@ class Status {
         .then((response) => response.json())
         .then((response) => {
           for (const status of response.statuses) {
-            fetchedStatuses.set(
+            fetchedStatusesMap.set(
               status.id,
               new Status(
                 status.id,
@@ -42,8 +42,7 @@ class Status {
             //   )
             // );
           }
-          console.log(fetchedStatuses);
-          resolve(fetchedStatuses);
+          resolve(fetchedStatusesMap);
         })
         .catch((err) => reject(err));
     });

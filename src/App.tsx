@@ -43,7 +43,9 @@ ChartJS.register(
 function App() {
   const [applications, setApplications] = useState<Application[]>([]);
   const [codeChallenges, setCodeChallenges] = useState<CodeChallenge[]>([]);
-  const [statuses, setStatuses] = useState<Map<number, Status>>(new Map());
+  const [statusesMap, setStatusesMap] = useState<Map<number, Status>>(
+    new Map()
+  );
 
   const [page, setPage] = useState("table");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -61,8 +63,8 @@ function App() {
   };
 
   const fetchStatuses = async () => {
-    Status.getStatuses().then((statuses) => {
-      setStatuses(statuses);
+    Status.getStatusesMap().then((statusesMap) => {
+      setStatusesMap(statusesMap);
     });
   };
 
@@ -95,8 +97,8 @@ function App() {
           setApplications={setApplications}
           codeChallenges={codeChallenges}
           setCodeChallenges={setCodeChallenges}
-          statuses={statuses}
-          setStatuses={setStatuses}
+          statusesMap={statusesMap}
+          setStatusesMap={setStatusesMap}
         ></DashBoard>
       );
     } else {
@@ -105,7 +107,7 @@ function App() {
           setApplications={setApplications}
           setCodeChallenges={setCodeChallenges}
           setLoggedIn={setLoggedIn}
-          setStatuses={setStatuses}
+          setStatusesMap={setStatusesMap}
         ></Login>
       );
     }
@@ -118,7 +120,7 @@ function App() {
           <Graphs
             applications={applications}
             codeChallenges={codeChallenges}
-            statuses={statuses}
+            statuses={statusesMap}
           ></Graphs>
         </div>
       );
@@ -128,7 +130,7 @@ function App() {
           setApplications={setApplications}
           setCodeChallenges={setCodeChallenges}
           setLoggedIn={setLoggedIn}
-          setStatuses={setStatuses}
+          setStatusesMap={setStatusesMap}
         ></Login>
       );
     }

@@ -8,14 +8,14 @@ import Status from "../utils/Status";
 interface ILoginProps {
   setApplications: Dispatch<React.SetStateAction<Application[]>>;
   setCodeChallenges: Dispatch<React.SetStateAction<CodeChallenge[]>>;
-  setStatuses: Dispatch<React.SetStateAction<Map<number, Status>>>;
+  setStatusesMap: Dispatch<React.SetStateAction<Map<number, Status>>>;
   setLoggedIn: Dispatch<React.SetStateAction<boolean>>;
 }
 
 const Login = ({
   setApplications,
   setCodeChallenges,
-  setStatuses,
+  setStatusesMap,
   setLoggedIn,
 }: ILoginProps) => {
   return (
@@ -29,7 +29,7 @@ const Login = ({
                 credentialResponse,
                 setApplications,
                 setCodeChallenges,
-                setStatuses
+                setStatusesMap
               );
               setLoggedIn(true);
               // localStorage.setItem("loggedIn", JSON.stringify(true));

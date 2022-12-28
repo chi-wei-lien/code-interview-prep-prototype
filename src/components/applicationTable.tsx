@@ -6,15 +6,15 @@ import dateToString from "../utils/DateToString";
 interface ITableProps {
   applications: Application[];
   setApplications: React.Dispatch<React.SetStateAction<Application[]>>;
-  statuses: Map<number, Status>;
-  setStatuses: React.Dispatch<React.SetStateAction<Map<number, Status>>>;
+  statusesMap: Map<number, Status>;
+  setStatusesMap: React.Dispatch<React.SetStateAction<Map<number, Status>>>;
 }
 
 const ApplicationTable = ({
   applications,
   setApplications,
-  statuses,
-  setStatuses,
+  statusesMap,
+  setStatusesMap,
 }: ITableProps) => {
   const [inEditMode, setInEditMode] = useState({
     status: false,
@@ -66,8 +66,8 @@ const ApplicationTable = ({
       await Application.getApplications().then((apps: Application[]) => {
         setApplications(apps);
       });
-      await Status.getStatuses().then((statuses) => {
-        setStatuses(statuses);
+      await Status.getStatusesMap().then((statusesMap) => {
+        setStatusesMap(statusesMap);
       });
     });
   };
@@ -195,7 +195,7 @@ const ApplicationTable = ({
               </tr>
             );
           } else {
-            const status = statuses.get(application.statusId);
+            const status = statusesMap.get(application.statusId);
             if (status) {
               return (
                 <tr

@@ -35,7 +35,7 @@ const DashBoard = ({
         <CodeChallengeForm
           setCodeChallenges={setCodeChallenges}
         ></CodeChallengeForm>
-        <div className="h-4 basis-full"></div>
+        <div className="h-6 basis-full"></div>
         <ApplicationTable
           applications={applications}
           setApplications={setApplications}

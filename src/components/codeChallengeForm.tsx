@@ -28,7 +28,7 @@ const CodeChallengeForm = ({ setCodeChallenges }: ICodeChallengeForm) => {
     });
   };
   return (
-    <div className="w-4/5 p-5 border-dashed sm:w-3/5 border-slate-300 border-3 min-h-48 h-fit">
+    <div className="w-4/5 p-5 border-dashed md:w-3/5 border-slate-300 border-3 min-h-48 h-fit">
       <h1 className="pb-5 text-xl text-center underline decoration-2 decoration-sky-300 declaration-3">
         Add Code Challenge
       </h1>

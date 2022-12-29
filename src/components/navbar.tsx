@@ -21,7 +21,7 @@ const Navbar = ({ loggedIn, page, setPage }: INavbarProps) => {
     );
   }
   return (
-    <div className="flex justify-center gap-4 mb-7">
+    <div className="flex flex-wrap justify-center w-full gap-2 mb-7">
       <button
         className={`px-5 py-1 font-bold border-2 rounded-full border-slate-800 ${
           page === "table" ? "bg-yellow-theme" : ""

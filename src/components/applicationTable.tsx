@@ -95,7 +95,7 @@ const ApplicationTable = ({
   };
 
   return (
-    <table className="w-4/5 text-center border table-fixed sm:text-left border-slate-800">
+    <table className="w-4/5 text-center border table-fixed sm:w-3/5 sm:text-left border-slate-800">
       <thead>
         <tr className="text-white bg-orange-300 border border-slate-800">
           <th className="text-sm border sm:text-md sm:py-3 sm:px-6 border-slate-800">
